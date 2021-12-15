@@ -22,6 +22,40 @@
 #### 일반 동위 셀렉터
 > 셀렉터A ~ 셀렉터B
 #### 가상 클래스 셀렉터
+> link(셀렉터가 방문하지 않은 링크), :visited(셀렉터가 방문한 링크), :hover, :active(클릭된 상태), :focus(셀렉터에 포커스가 들어와있을 때) 와 같이 특정 상태에 따라 스타일 지정
+#### UI 요소 상태 셀렉터
+> :checked, :enabled, :disabled
+#### 구조 가상 클래스 셀렉터
+> :first-child , :last-child, :nth-child(n), :nth-last-child(n), :first-of-type, :last-of-type, :nth-of-type(n), :nth-las-of-type(n)
+#### 부정 셀렉터
+> :not
+#### 정합성 체크 셀렉터
+> :valid, :invlid(input, form에 대한 정합성 검증이 실패하거나 성공한 요소)
+#### 가상 요소 셀렉터
+> ::first-letter(콘텐츠의 첫글자), ::first-line(콘텐츠의 첫줄), ::after, ::before, ::selection(드래그한 콘텐츠)
+
+#### em 단위
+> 배수 단위로 상대 단위임, 요소에 지정된 사이즈에 상대적인 사이즈를 설정 1em은 요소에 지정된 사이즈 1배 2em dms 2배
+>중첩된 자식 요소에 em을 지정하면 모든 자식 요소의 사이즈에 영향을 미치기 때문에 주의
+#### rem 단위
+> em의 기준은 상속의 영향으로 바뀔 수 있음 하지만 rem은 html 사이즈를 기준으로 삼음 (root)(em)
+#### viewport 단위
+> vmin : viewport 너비 높이 중 작은쪽의 1/100
+> vmax : viewport 너비 높이 중 작은쪽의 1/100
+#### box-sizing
+> content-box : content 영역의 width, height
+> border-box : padding, border 가 포함된 값
+#### background-attachment 프로퍼티
+> 일반적으로 화면을 스크롤하면 배경이미지도 함께 스크롤 되는데 고정되어있게 할려면 fixed 키워드를 넣으면 됨
+#### @keyframes
+> CSS 애니메이션과 트랜지션 방식의 주된 차이는 @keyframes rule에 있음 애니메이션의 흐름중에서 여러 시점에서 css 프로퍼티 값을 지정할 수 있음
+#### SASS mixin
+> extend와 차이는 매개 변수를 사용 할 수 있다. style markup 반환
+#### SASS function
+> mixin 과 다르게 @return directive를 통하여 값을 반환
+
+
+
 
 
 
@@ -258,4 +292,27 @@ function Counter() {
 #### 일시적 사작지대 TDZ 란
 > 스코프의 시작 지점부터 초기화 시작 지점까지의 구간을 TDZ 라고 한다
 
+#### 이벤트 버빌링과 캡처링
+> 버블링 : 한요소에 이벤트가 발생하면 이 요소에 할당된 핸들러가 동작하고 이어서 부모 요서의 핸들러 동작 거의 모든 이벤트는 버블링됨 focus와 같은 예외도 있긴함
+> 캡쳐링 : 캡처링은 한요소에 이벤트가 가기까지 이벤트가 하위 요소로 전파되는 단계
+
+
 # React
+
+# 기타
+#### webpack?
+> 여러개 파일을 하나의 파일로 합쳐주는 모듈 번들러
+
+#### 바벨?
+> ECMAScript 로 짜여진 코드를 현재 및 과거의 브라우저 환경에서 호환되는 버전으로 변환하는데 주로 사용
+
+#### npm?
+> npm 은 자바스크립트 프로그래밍 언어를 위한 패키지 관리자이다.
+
+
+#### 브라우저 저장소
+>키 - 벨류 스토리지의 형태
+> 로컬 스토리지와 세션 스토리지의 차이점은 영구성에 있음. 로컬 스토리지는 사용자가 지우지 않는 이상 계속 남아있음, 세션은 닫으면 없어짐
+> 쿠키는 만료 기한이 있는 키 - 값 저장소
+> localStorage.setItem, getItem, removeItem, clear 와 같이 사용할 수있음
+> 세션 스토리지는 window.sessionStorage에 위치
