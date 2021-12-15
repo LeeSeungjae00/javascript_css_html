@@ -1,7 +1,32 @@
 # javascript_css_html
 기초적인 이론 지식
 # HTML
+#### head tag
+> 메타데이터를 포함하기 위한 요소, title, style, link ,script 에 대한 데이터
+
+#### meta tag
+> descripiton, keywords, author, 기타 메타 데이터 정의 브라우저, 검색엔진 등에 의해 사용 
+
+#### form tag
+> 사용자가 입력한 데이터를 수집하기 위해 사용, input, textarea, button, select, ... 등의 입력 양식 태그를 포함 할 수 있음
+> action = URL, method = get,post 를 가지고 있음
+> 
+
 # CSS
+#### 후손 셀렉터
+>셀렉터A 셀렉터B 자식 뿐만아니라 아래 모두에게 적용
+#### 자식 셀렉터
+> 셀렉터 > 셀렉터B 자식만 
+#### 인접 동위 셀렉터
+> 셀렉터A + 셀렉터B 바로 옆에있는 형제만
+#### 일반 동위 셀렉터
+> 셀렉터A ~ 셀렉터B
+#### 가상 클래스 셀렉터
+
+
+
+
+
 # Javascript
 #### javascript의 특징?
 >   1. 웹 브라우저에서 동작하는 유일한 프로그래밍 언어
@@ -111,7 +136,6 @@ foo.bind(bar)(); // bar
 >// Scope-Safe Constructor Pattern
 function A(arg) {
   // 생성자 함수가 new 연산자와 함께 호출되면 함수의 선두에서 빈객체를 생성하고 this에 바인딩한다.
-
 >  /*
   this가 호출된 함수(arguments.callee, 본 예제의 경우 A)의 인스턴스가 아니면 new 연산자를 사용하지 않은 것이므로 이 경우 new와 함께 생성자 함수를 호출하여 인스턴스를 반환한다.
   arguments.callee는 호출된 함수의 이름을 나타낸다. 이 예제의 경우 A로 표기하여도 문제없이 동작하지만 특정함수의 이름과 의존성을 없애기 위해서 arguments.callee를 사용하는 것이 좋다.
@@ -127,7 +151,7 @@ function A(arg) {
 >var a = new A(100);
 var b = A(10);
 >
-console.log(a.value);
+> console.log(a.value);
 console.log(b.value);
 
 #### 실행 컨텍스트가 무엇인지
