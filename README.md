@@ -302,7 +302,103 @@ function Counter() {
 
 # React
 
-hook의 종류와 사용법들
+### React 공식으로 제공하는 hook의 종류와 사용법들
+(기본적인 훅은 생략함 내기준 이미 아는 훅)
+#### useContext
+> ```
+> const value = useContext(MyContext); //context 객체(React.createContext에서 반환된 값)을 받아 그 context의 현재 값을 반환합니다.
+#### useReducer
+> ``` 
+> const [state, dispatch] = useReducer(reducer, initialArg, init) ///useState의 대체 함수 (state, action) => newState의 형태로 reducer를 받고 dispatch 메서드와 짝의 형태로 현재 state를 반환합니다. 세번자 인자는 초기 state를 지연해서 생성하기 위함
+> 
+>ex)
+> 
+>function init(initialCount) {
+>  return {count: initialCount};
+>}
+>function reducer(state, action) {
+>  switch (action.type) {
+>    case 'increment':
+>      return {count: state.count + 1};
+>    case 'decrement':
+>      return {count: state.count - 1};
+>    case 'reset':
+>      return init(action.payload);
+>    default:
+>      throw new Error();
+>  }
+>}
+>
+>function Counter({initialCount}) {
+>  const [state, dispatch] = useReducer(reducer, initialCount, init);
+>  return (
+>    <>
+>      Count: {state.count}
+>      <button
+>        onClick={() => dispatch({type: 'reset', payload: initialCount})}>
+>        Reset
+>      </button>
+>      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+>      <button onClick={() => dispatch({type: 'increment'})}>+</button>
+>    </>
+>  );
+>}
+
+#### useCallback
+> ``` 
+> const memoizedCallback = useCallback(
+>  () => {
+>    doSomething(a, b);
+>  },
+>  [a, b],
+>);
+> //메모이제이션된 콜백을 반환한다. 불필요한 렌더링을 방지하기 위해 (예로 shouldComponentUpdate를 사용하여) 참조의 동일성에 의존적인 최적화된 자식 컴포넌트에 콜백을 전달할 때 유용합니다.
+
+#### useMemo
+> ```
+> const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+> 메모이제이션된 값을 반환한다.
+
+#### useRef
+> ```
+> const refContainer = useRef(initialValue); 
+>// 컴포넌트의 전 생애주기를 통해 유지될 수 있도록 한다. 컴포넌트가 리렌더링 되도 값을 유지해야 할 것들을 넣으면 됨 interVal 사용하는 것처럼 DOM 에 접근하는 방법도 있어요
+>//부모가 자식에게 메서드를 넘겨하하는 상황이 발생할 떄 
+
+#### useImperativeHandle
+> ```
+>const FormControl = React.forwardRef((props, ref) => {
+> const inputRef = useRef(null);
+> useImperativeHandle(ref, () => ({getValue(){
+>  return inputRef.current.value
+> }) }, [inputRef]); // deps도 추가가능하다.
+> return (
+>  <div className="form-control">
+>    <input type="text" ref={inputRef} />
+>  </div>
+> );
+>})
+>const App = () => {
+> const inputRef = React.useRef();
+> return (
+>  <div className="App">
+>    <FormControl ref={inputRef} />
+>    <button
+>     onClick={() => {
+>      console.log(inputRef.current.getValue());
+>     }}>
+>     focus
+>    </button>  
+>  </div>
+> );
+>}
+>//위의 예시에서 <FormControl ref={inputRef} />를 렌더링한 부모 컴포넌트는 inputRef.current.getValue()를 호출할 수 있습니다.
+>//자식 컴포넌트의 ref를 부모에서 사용해야 하는 경우나, 메소드 전달 할때 유용하게 쓸 수 도 있을듯..
+
+#### useLayoutEffect
+>이 함수의 시그니처는 useEffect와 동일하긴 한데, 모든 DOM 변경 후에 동기적으로 발생합니다. 이것은 DOM에서 레이아웃을 읽고 동기적으로 리렌더링하는 경우에 사용하세요. useLayoutEffect의 내부에 예정된 갱신은 브라우저가 화면을 그리기 이전 시점에 동기적으로 수행될 것입니다.
+
+화면 갱신 차단의 방지가 가능할 때 표준 useEffect를 먼저 사용하세요.
 
 # 기타
 #### webpack?
