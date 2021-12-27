@@ -413,6 +413,8 @@ function Counter() {
 #### CORS
 >추가 HTTP 헤더를 사용하여, 한 출처에서 실행준인 웹 애플리케이션이 다른 출처의 선택한 자원에 접근할 수 있는 권한을 부여하도록 브라우저에게 알려주는 체제
 >CORS는 동일한 도메인이 아닌 다른 도메인에 리소스를 요청할 시에 서로 다른 origin에 대하여 HTTP 요청이 가능하게 해주는 표준입니다.
+> 로컬환경에서 테스트를 할 때 CORS를 해결한 적이 있다.
+> 일단 package.js 에서 "proxy" : "프록시 주소"로 설정해 준 후 요청을 로컬로 보내게 되면 프록시로 요청을 하게 된다. 그후 node로 만든 프록시서버에서 패킷의 해더를 조작하여 해결한 경험이 있다.
 
 #### 브라우저 저장소
 >키 - 벨류 스토리지의 형태
@@ -420,3 +422,4 @@ function Counter() {
 > 쿠키는 만료 기한이 있는 키 - 값 저장소
 > localStorage.setItem, getItem, removeItem, clear 와 같이 사용할 수있음
 > 세션 스토리지는 window.sessionStorage에 위치
+> 세션 스토리지에 access token 과 refresh 토큰을 넣고 사용해 보았음
